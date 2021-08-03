@@ -1,5 +1,5 @@
 function fetchImage(imageName, page) {
-    const KEY = "21886908-2dadc690508cf849d5de61581";
+    const KEY = "key=21886908-2dadc690508cf849d5de61581";
     const LINK = "https://pixabay.com/api/";
 
     return fetch(

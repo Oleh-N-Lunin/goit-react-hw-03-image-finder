@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
 
@@ -11,7 +11,7 @@ import Button from "./components/Button/Button";
 
 import "./components/styles/styles.css";
 
-class App extends Component() {
+class App extends Component {
   state = {
     imageName: "",
     imagesArray: [],

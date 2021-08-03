@@ -1,10 +1,10 @@
 import shortid from 'shortid';
 import { toast } from 'react-toastify';
-import { Component } from 'react';
+import React, { Component } from 'react';
 
 import "../styles/styles.css";
 
-class SearchBar extends Component {
+class Searchbar extends Component {
     state = {
         imageName: "",
     }
@@ -50,4 +50,4 @@ class SearchBar extends Component {
     }
 }
 
-export default SearchBar;
+export default Searchbar;
