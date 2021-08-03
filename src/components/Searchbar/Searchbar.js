@@ -2,6 +2,8 @@ import shortid from 'shortid';
 import { toast } from 'react-toastify';
 import { Component } from 'react';
 
+import "../styles/styles.css";
+
 class SearchBar extends Component {
     state = {
         imageName: "",
@@ -29,7 +31,7 @@ class SearchBar extends Component {
             <header className="Searchbar">
                 <form className="SearchForm" onSubmit={this.onSubmitFetch}>
                 <button type="submit" className="SearchForm-button">
-                    <span className="SearchForm-button-label">Пошук</span>
+                    <span className="SearchForm-button-label">Search</span>
                 </button>
                 <input
                 id={searchkey}
@@ -37,7 +39,7 @@ class SearchBar extends Component {
                 type="text"
                 autoComplete="off"
                 autoFocus
-                placeholder="Пошук зображень та фото"
+                placeholder="Search images and photos"
                 name="name"
                 value={this.state.imageName}
                 onChange={this.onInputValue}

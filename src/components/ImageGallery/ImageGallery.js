@@ -1,5 +1,7 @@
 import ImageGalleryItem from "../ImageGalleryItem/ImageGalleryItem";
 
+import "../styles/styles.css";
+
 function ImageGallery({ arrayImages, onSubmit }){
     return (
         <ul className="ImageGallery">

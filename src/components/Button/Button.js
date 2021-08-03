@@ -1,3 +1,5 @@
+import "../styles/styles.css";
+
 function Button({ children, onClick }) {
     return (
       <div className="containerBtn-loadMore">

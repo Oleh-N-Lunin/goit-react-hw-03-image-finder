@@ -1,6 +1,8 @@
 import { Component } from "react";
 import { createPortal } from "react-dom";
 
+import "../styles/styles.css";
+
 class Modal extends Component{
     componentDidMount() {
         window.addEventListener("keydown", this.exitModal);
