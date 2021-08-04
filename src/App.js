@@ -1,19 +1,18 @@
 import React, { Component } from "react";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"
+import "react-toastify/dist/ReactToastify.css";
 
-import Api from "./servises/FetchAPI";
-import Searchbar from "./components/Searchbar/Searchbar";
-import ImageGalleryItem from "./components/ImageGalleryItem/ImageGalleryItem";
-import Modal from "./components/Modal/Modal";
-import Loader from "./components/Loader/Loader";
+import Api from "./services/FetchAPI";
+import Searchbar from "./components/Searchbar";
+import ImageGalleryItem from "./components/ImageGallery";
+import Modal from "./components/Modal";
+import Loader from "./components/Loader";
 import Button from "./components/Button/Button";
+import "./styles/styles.css";
 
-import "./components/styles/styles.css";
-
-class App extends Component {
+export default class Finder extends Component {
   state = {
-    imageName: "",
+    nameImage: "",
     imagesArray: [],
     loading: false,
     selectedImage: null,
@@ -23,41 +22,49 @@ class App extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.imageName !== this.state.imageName) {
+    if (prevState.nameImage !== this.state.nameImage) {
       this.setState({
         page: 1,
-        imageName: this.state.imageName,
+        nameImage: this.state.nameImage,
         imagesArray: [],
       });
-      this.imagesSearchFetch();
+      this.searchImagesFetch();
     }
-  };
+  }
+  searchImagesFetch = () => {
+    const { page, nameImage } = this.state;
 
-  imagesSearchFetch = () => {
-    const { page, imageName } = this.state;
     this.setState({ loading: true });
 
-    Api.fetchImage(imageName, page)
-      .then((imagesArrayFetch) => this.checkNewFetchImagesArray(imagesArrayFetch.hits))
+    Api.imagesFetch(nameImage, page)
+      .then((imagesArrayFetch) =>
+        this.checkNewFetchImagesArray(imagesArrayFetch.hits)
+      )
       .catch((error) => this.setState({ error }))
-      .finally(() => this.setState((prevState) => ({
-        loading: false,
-        page: prevState.page + 1,
-      })));
+      .finally(() =>
+        this.setState((prevState) => ({
+          loading: false,
+          page: prevState.page + 1,
+        }))
+      );
   };
 
   checkNewFetchImagesArray = (imagesArrayFetch) => {
     imagesArrayFetch === []
-      ? this.setState({ imagesArray: imagesArrayFetch, })
-      : this.setState((prevState) => ({ imagesArray: [...prevState.imagesArray, ...imagesArrayFetch], }));
+      ? this.setState({
+          imagesArray: imagesArrayFetch,
+        })
+      : this.setState((prevState) => ({
+          imagesArray: [...prevState.imagesArray, ...imagesArrayFetch],
+        }));
   };
 
-  toggleModal = () => {
+  togleModal = () => {
     this.setState(({ showModal }) => ({ showModal: !showModal }));
   };
 
-  isHandleFormSubmit = (imageName) => {
-    this.setState({ imageName });
+  isHendleFormaSubmit = (nameImage) => {
+    this.setState({ nameImage });
   };
 
   isCurrentImage = (currentImage, tags) => {
@@ -66,27 +73,30 @@ class App extends Component {
       showModal: true,
     });
   };
-
   scrollGallery = () => {
     setTimeout(() => {
       window.scrollTo({
         top: document.documentElement.scrollHeight,
         behavior: "smooth",
       });
-    }, 500);
+    }, 1000);
   };
 
   onClickLoadMore = () => {
-    this.imagesSearchFetch();
+    this.searchImagesFetch();
     this.scrollGallery();
   };
-
   render() {
-    const { loading, showModal, imageName, imagesArray, selectedImage, } = this.state;
-    
+    const {
+      loading,
+      showModal,
+      nameImage,
+      imagesArray,
+      selectedImage,
+    } = this.state;
     return (
       <>
-        <Searchbar onSubmit={this.isHandleFormSubmit} />
+        <Searchbar onSubmit={this.isHendleFormaSubmit} />
 
         {imagesArray && (
           <ImageGalleryItem
@@ -99,10 +109,10 @@ class App extends Component {
             <img src={selectedImage[0]} alt={selectedImage[1]} />
           </Modal>
         )}
-        {!imageName && (
+        {!nameImage && (
           <div className="container-paragraphInfo">
             <p className="paragraphInfo">
-              Please input name
+              Відсутнє ім'я! Будь ласка введіть його в поле яке вище.
             </p>
           </div>
         )}
@@ -110,12 +120,9 @@ class App extends Component {
         {loading && <Loader />}
 
         {imagesArray.length !== 0 && (
-          <Button onClick={this.onClickLoadMore}>More...</Button>
+          <Button onClick={this.onClickLoadMore}>Завантажити ще</Button>
         )}
       </>
     );
   }
-
 }
-
-export default App;

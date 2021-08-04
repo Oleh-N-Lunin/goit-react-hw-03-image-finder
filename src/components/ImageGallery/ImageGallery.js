@@ -1,9 +1,10 @@
-import ImageGalleryItem from "../ImageGalleryItem/ImageGalleryItem";
+import React from "react";
 
 import "../styles/styles.css";
+import ImageGalleryItem from "./ImageGalleryItem";
 
-function ImageGallery({ arrayImages, onSubmit }){
-return (
+export default function ImageGallery({ arrayImages, onSubmit }) {
+  return (
     <ul className="ImageGallery">
       {arrayImages.map(({ id, webformatURL, largeImageURL, tags }) => (
         <ImageGalleryItem
@@ -17,5 +18,3 @@ return (
     </ul>
   );
 }
-
-export default ImageGallery;

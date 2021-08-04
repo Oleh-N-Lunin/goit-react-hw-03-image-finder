@@ -1,19 +1,19 @@
+import React from "react";
+
 import "../styles/styles.css";
 
-function ImageGalleryItem({
-    webformatURL,
-    tags,
-    largeImageURL,
-    onClick,
-    }) {
-    return (
-        <li
-            className="ImageGalleryItem"
-            onClick={()=> onClick(largeImageURL,tags)}
-        >
-            <img src={webformatURL} alt={tags} className="ImageGalleryItem-image" />
-        </li>
-    );
+export default function ImageGalleryItem({
+  webformatURL,
+  tags,
+  largeImageURL,
+  onClick,
+}) {
+  return (
+    <li
+      onClick={() => onClick(largeImageURL, tags)}
+      className="ImageGalleryItem"
+    >
+      <img src={webformatURL} alt={tags} className="ImageGalleryItem-image" />
+    </li>
+  );
 }
-
-export default ImageGalleryItem;
