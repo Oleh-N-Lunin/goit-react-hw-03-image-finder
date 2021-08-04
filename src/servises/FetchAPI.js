@@ -1,4 +1,4 @@
-function fetchImage(imageName, page) {
+function imagesFetch(imageName, page) {
     const KEY = "key=21886908-2dadc690508cf849d5de61581";
     const LINK = "https://pixabay.com/api/";
 
@@ -14,7 +14,7 @@ function fetchImage(imageName, page) {
 }
 
 const api = {
-    fetchImage,
+    imagesFetch,
 };
 
 export default api;
