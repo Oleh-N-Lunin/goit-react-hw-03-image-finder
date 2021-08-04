@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { createPortal } from "react-dom";
 
-import "../styles/styles.css";
+import "../Styles/styles.css";
 
 export default class Modal extends Component {
 

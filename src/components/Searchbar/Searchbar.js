@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import shortid from "shortid";
 import { toast } from "react-toastify";
 
-import "../styles/styles.css";
+import "../Styles/styles.css";
 
 export default class Searchbar extends Component {
   state = {

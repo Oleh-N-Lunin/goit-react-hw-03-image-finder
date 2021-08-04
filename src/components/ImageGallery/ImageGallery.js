@@ -1,7 +1,7 @@
 import React from "react";
 
-import "../styles/styles.css";
-import ImageGalleryItem from "./ImageGalleryItem";
+import "../Styles/styles.css";
+import ImageGalleryItem from "../ImageGalleryItem/ImageGalleryItem";
 
 export default function ImageGallery({ arrayImages, onSubmit }) {
   return (

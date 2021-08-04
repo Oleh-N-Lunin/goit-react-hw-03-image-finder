@@ -1,7 +1,7 @@
 import React from "react";
 import Loader from "react-loader-spinner";
 
-import "../styles/styles.css";
+import "../Styles/styles.css";
 
 export default function LoaderFunc() {
   return (

@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import Api from "./services/FetchAPI";
-import Searchbar from "./components/Searchbar";
-import ImageGalleryItem from "./components/ImageGallery";
-import Modal from "./components/Modal";
-import Loader from "./components/Loader";
+import Api from "./servises/FetchAPI";
+import Searchbar from "./components/Searchbar/Searchbar";
+import ImageGalleryItem from "./components/ImageGallery/ImageGallery";
+import Modal from "./components/Modal/Modal";
+import Loader from "./components/Loader/Loader";
 import Button from "./components/Button/Button";
-import "./styles/styles.css";
+import "../src/styles/styles.css";
 
 export default class App extends Component {
   state = {
@@ -112,7 +112,7 @@ export default class App extends Component {
         {!nameImage && (
           <div className="container-paragraphInfo">
             <p className="paragraphInfo">
-              Відсутнє ім'я! Будь ласка введіть його в поле яке вище.
+              No image name
             </p>
           </div>
         )}
@@ -120,7 +120,7 @@ export default class App extends Component {
         {loading && <Loader />}
 
         {imagesArray.length !== 0 && (
-          <Button onClick={this.onClickLoadMore}>Завантажити ще</Button>
+          <Button onClick={this.onClickLoadMore}>Load more..</Button>
         )}
       </>
     );
