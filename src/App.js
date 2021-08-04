@@ -10,7 +10,7 @@ import Loader from "./components/Loader";
 import Button from "./components/Button/Button";
 import "./styles/styles.css";
 
-export default class Finder extends Component {
+export default class App extends Component {
   state = {
     nameImage: "",
     imagesArray: [],
